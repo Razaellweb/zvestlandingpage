@@ -51,9 +51,9 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  --primary: oklch(0.53 0.2723 283.52);
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
+  --secondary: oklch(0.35 0.1977 282.57);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
@@ -118,5 +118,91 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Custom scroll behavior for the carousels */
+  .carousel-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  .carousel-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Animation for sticky cards */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.custom-header-shadow {
+  box-shadow: 0px 4px 20px 2px #0000001a;
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Card transitions */
+.active-card {
+  transition: all 0.5s ease-out;
+}
+
+.inactive-card {
+  transition: all 0.3s ease-out;
+  filter: grayscale(20%);
+}
+
+.carousel-section::before,
+.carousel-section::after {
+  @apply absolute top-0 h-full w-8 z-10 pointer-events-none;
+  content: "";
+}
+
+.carousel-section::before {
+  @apply left-0;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+.carousel-section::after {
+  @apply right-0;
+  background-image: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+@layer utilities {
+  .container {
+    @apply mx-auto px-8; /* center + padding 2rem (px-8 = 2rem) */
+  }
+
+  @media (min-width: 1536px) {
+    .container {
+      max-width: 1400px;
+    }
   }
 }
