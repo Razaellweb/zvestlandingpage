@@ -15,13 +15,6 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   keywords: siteConfig.keywords,
-  authors: [
-    {
-      name: "Olorunfemi Daramola",
-      url: "https://github.com/berryboylb",
-    },
-  ],
-  creator: "Olorunfemi Daramola",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -35,7 +28,6 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [`${siteConfig.url}/og.jpg`],
-    creator: "@pappychulow",
   },
   icons: {
     icon: "/icon.svg",
