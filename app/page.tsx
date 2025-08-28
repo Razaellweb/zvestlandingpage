@@ -1,269 +1,293 @@
 "use client";
 import React from "react";
-import Link from "next/link";
+import { motion } from "framer-motion";
 import { Button } from "../components/ui/button";
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../components/ui/accordion";
-import { Card } from "../components/ui/card";
-import { Avatar } from "../components/ui/avatar";
-import { Separator } from "../components/ui/separator";
-import { Badge } from "../components/ui/badge";
-import { ArrowRight, CheckCircle, Star, Smartphone, ShieldCheck, TrendingUp } from "lucide-react";
+import { ArrowRight, Smartphone, ShieldCheck, TrendingUp, Users, CheckCircle, Download } from "lucide-react";
+import Image from "next/image";
 
 const features = [
   {
-    icon: <TrendingUp className="w-7 h-7 text-blue-700" aria-hidden="true" />,
+    icon: <TrendingUp className="w-7 h-7 text-blue-700" aria-hidden="true" />, 
     title: "Automated Savings",
-    desc: "Set your goals and let z-vest automate your savings journey.",
+    desc: "Discipline your growth with effortless, recurring savings tailored to your goals."
   },
   {
-    icon: <Smartphone className="w-7 h-7 text-blue-700" aria-hidden="true" />,
+    icon: <Smartphone className="w-7 h-7 text-blue-700" aria-hidden="true" />, 
     title: "Flexible Investments",
-    desc: "Choose from a range of investment options tailored to your risk profile.",
+    desc: "Choose from a range of investment options with competitive returns, all in one app."
   },
   {
-    icon: <ShieldCheck className="w-7 h-7 text-blue-700" aria-hidden="true" />,
-    title: "Secure & Trusted",
-    desc: "Your funds are protected with bank-level security and transparency.",
+    icon: <CheckCircle className="w-7 h-7 text-blue-700" aria-hidden="true" />, 
+    title: "Goal-Based Saving",
+    desc: "Set, track, and achieve your dreams with personalized saving plans."
   },
   {
-    icon: <Star className="w-7 h-7 text-blue-700" aria-hidden="true" />,
-    title: "Competitive Returns",
-    desc: "Earn attractive interest rates and grow your wealth faster.",
+    icon: <ShieldCheck className="w-7 h-7 text-blue-700" aria-hidden="true" />, 
+    title: "Secure & Transparent",
+    desc: "Your money is safe. Trusted by thousands across Africa for reliability and clarity."
   },
 ];
 
 const testimonials = [
   {
-    name: "Adaeze O.",
+    name: "Amina O.",
     avatar: "https://randomuser.me/api/portraits/women/65.jpg",
-    quote:
-      "z-vest made saving so easy! I love how I can invest with just a few taps and watch my money grow.",
-    location: "Lagos, Nigeria",
+    text: "z-vest made saving for my business so easy. I love the flexibility and the peace of mind!"
   },
   {
     name: "Kwame B.",
-    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
-    quote:
-      "The automated savings feature keeps me disciplined. I feel secure knowing my funds are safe.",
-    location: "Accra, Ghana",
+    avatar: "https://randomuser.me/api/portraits/men/43.jpg",
+    text: "I reached my travel goals faster than I thought possible. The app is super intuitive."
   },
   {
-    name: "Zinhle M.",
+    name: "Chidinma E.",
     avatar: "https://randomuser.me/api/portraits/women/44.jpg",
-    quote:
-      "Finally, a platform that understands young Africans! The returns are great and withdrawals are smooth.",
-    location: "Johannesburg, South Africa",
+    text: "Investing always felt risky, but z-vest makes it simple and trustworthy. Highly recommend!"
   },
 ];
 
 const faqs = [
   {
     q: "Is my money safe with z-vest?",
-    a: "Absolutely. We use bank-level security and all investments are transparently managed.",
+    a: "Absolutely. We use bank-level security and your funds are insured and protected."
   },
   {
-    q: "How do I withdraw my savings?",
-    a: "Withdrawals are easy and can be done anytime from your dashboard, with built-in discipline features to help you stay on track.",
+    q: "Can I withdraw anytime?",
+    a: "Yes, you have full control. Withdraw or invest your savings whenever you want."
   },
   {
-    q: "What investment options are available?",
-    a: "From low-risk savings to high-growth investments, z-vest offers a range of options for every risk profile.",
+    q: "Are there any hidden fees?",
+    a: "No hidden fees. All charges are transparent and shown upfront."
   },
   {
-    q: "Who can use z-vest?",
-    a: "z-vest is designed for young Africans looking to build wealth simply and securely.",
-  },
-];
-
-const partners = [
-  {
-    name: "Flutterwave",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Flutterwave_Logo.png",
-    alt: "Flutterwave logo",
-  },
-  {
-    name: "PiggyVest",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/2/2e/PiggyVest_Logo.png",
-    alt: "PiggyVest logo",
-  },
-  {
-    name: "Chime",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/2/2b/Chime_logo.png",
-    alt: "Chime logo",
+    q: "How do I get started?",
+    a: "Just sign up, set your goals, and start saving or investing in minutes!"
   },
 ];
 
 export default function LandingPage() {
   return (
-    <main className="bg-gradient-to-b from-blue-900 via-blue-800 to-slate-50 min-h-screen text-slate-900 dark:text-slate-100">
+    <main className="bg-gradient-to-b from-[#f1f5f9] via-white to-[#e0e7ef] min-h-screen text-[#0f172a] dark:from-[#0f172a] dark:via-[#1e293b] dark:to-[#1e293b]">
       {/* Navbar */}
-      <nav className="flex items-center justify-between px-6 py-4 md:px-16 bg-transparent z-20 relative">
-        <Link href="/" className="flex items-center gap-2" aria-label="z-vest home">
-          <span className="inline-block bg-gradient-to-r from-blue-700 to-blue-400 rounded-full w-9 h-9 flex items-center justify-center">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1e3a8a" /><path d="M8 15l4-6 4 6" stroke="#f1f5f9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          </span>
-          <span className="font-bold text-xl tracking-tight text-blue-900 dark:text-blue-200">z-vest</span>
-        </Link>
-        <div className="flex items-center gap-4">
-          <Link href="/signin" className="text-blue-800 hover:underline font-medium">Sign In</Link>
-          <Button asChild variant="outline" className="border-blue-700 text-blue-800 hover:bg-blue-700 hover:text-white transition-colors">
-            <Link href="/signup" aria-label="Sign up for z-vest">
-              Sign Up <ArrowRight className="ml-2 w-4 h-4" />
-            </Link>
+      <nav className="flex items-center justify-between px-6 py-5 md:px-16 lg:px-32 bg-transparent">
+        <div className="flex items-center gap-2">
+          <span className="inline-block rounded-full bg-blue-700 w-8 h-8 mr-2" aria-hidden="true"></span>
+          <span className="font-bold text-xl tracking-tight text-blue-900">z-vest</span>
+        </div>
+        <div className="flex gap-3">
+          <Button variant="ghost" asChild>
+            <a href="/signin" aria-label="Sign In">Sign In</a>
+          </Button>
+          <Button variant="outline" className="border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white transition-colors" asChild>
+            <a href="/signup" aria-label="Sign Up">Sign Up</a>
           </Button>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="relative flex flex-col md:flex-row items-center justify-between px-6 md:px-16 pt-12 md:pt-24 pb-12 md:pb-24 gap-10 md:gap-20">
-        <div className="flex-1 z-10">
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight text-blue-900 dark:text-blue-100 mb-6">
-            Save Smart.<br className="hidden md:block" /> Invest Easy.
+      <section className="relative flex flex-col-reverse md:flex-row items-center justify-between px-6 md:px-16 lg:px-32 py-12 md:py-20 gap-10 md:gap-0">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="w-full md:w-1/2 flex flex-col gap-6"
+        >
+          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight text-blue-900 dark:text-white mb-2">
+            Save Smart.<br />Invest Confidently.
           </h1>
-          <p className="text-lg md:text-2xl text-blue-800 dark:text-blue-200 mb-8 max-w-xl">
-            z-vest empowers young Africans to build wealth effortlessly with automated savings and flexible investment options.
+          <p className="text-lg md:text-xl text-blue-800 dark:text-blue-200 max-w-xl">
+            z-vest empowers young Africans to build wealth effortlessly through automated savings and investment options tailored for emerging markets.
           </p>
-          <Button asChild size="lg" className="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition-all focus:ring-4 focus:ring-blue-300">
-            <Link href="/signup" aria-label="Start Saving Today">
+          <Button
+            size="lg"
+            className="mt-4 w-fit px-8 py-4 bg-blue-700 text-white rounded-full shadow-lg hover:bg-blue-800 transition-colors flex items-center gap-2 text-lg"
+            asChild
+          >
+            <a href="/signup" aria-label="Start Saving Today">
               Start Saving Today <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
+            </a>
           </Button>
-        </div>
-        <div className="flex-1 flex items-center justify-center relative">
-          {/* Custom SVG Illustration */}
-          <div className="w-[320px] h-[320px] md:w-[400px] md:h-[400px] rounded-full bg-gradient-to-tr from-blue-700 via-blue-400 to-blue-200 shadow-xl flex items-center justify-center animate-fade-in">
-            <svg width="220" height="220" viewBox="0 0 220 220" fill="none" aria-hidden="true">
-              <circle cx="110" cy="110" r="100" fill="#f1f5f9" />
-              <path d="M60 150 Q110 80 160 150" stroke="#1e3a8a" strokeWidth="8" fill="none" />
-              <circle cx="110" cy="110" r="30" fill="#1e3a8a" />
-              <circle cx="110" cy="110" r="18" fill="#f1f5f9" />
-              <circle cx="110" cy="110" r="8" fill="#1e3a8a" />
-              <path d="M110 110 L110 60" stroke="#1e3a8a" strokeWidth="6" strokeLinecap="round" />
-              <circle cx="110" cy="60" r="7" fill="#38bdf8" />
-            </svg>
+          <div className="flex items-center gap-4 mt-6">
+            <Users className="w-6 h-6 text-blue-700" aria-hidden="true" />
+            <span className="text-blue-900 dark:text-blue-100 font-medium">Trusted by 50,000+ young Africans</span>
           </div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="w-full md:w-1/2 flex justify-center md:justify-end"
+        >
+          <div className="relative w-[320px] h-[420px] md:w-[360px] md:h-[480px] rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-tr from-blue-700 via-blue-400 to-blue-200 flex items-end">
+            <Image
+              src="/app-mockup.png"
+              alt="z-vest mobile app mockup"
+              fill
+              className="object-cover object-bottom"
+              priority
+            />
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-900/80 to-transparent h-32" aria-hidden="true"></div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Social Proof */}
+      <section className="flex flex-col items-center gap-2 py-6 md:py-8">
+        <span className="uppercase text-xs tracking-widest text-blue-700 font-semibold">As featured in</span>
+        <div className="flex flex-wrap justify-center gap-6 mt-2 opacity-80">
+          <Image src="/logos/techcabal.svg" alt="TechCabal" width={90} height={28} className="h-7 w-auto" />
+          <Image src="/logos/guardian.svg" alt="The Guardian" width={90} height={28} className="h-7 w-auto" />
+          <Image src="/logos/venturesafrica.svg" alt="Ventures Africa" width={90} height={28} className="h-7 w-auto" />
         </div>
       </section>
 
-      {/* Social Proof / Partners */}
-      <section className="px-6 md:px-16 py-6 md:py-10 bg-slate-50 dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <span className="text-sm md:text-base text-slate-500 dark:text-slate-400 font-medium mb-2 md:mb-0">Trusted by leading fintech partners</span>
-          <div className="flex items-center gap-8">
-            {partners.map((p) => (
-              <img
-                key={p.name}
-                src={p.logo}
-                alt={p.alt}
-                className="h-8 md:h-10 grayscale hover:grayscale-0 transition-all duration-300"
-                loading="lazy"
+      {/* Features & Benefits */}
+      <section className="px-6 md:px-16 lg:px-32 py-12 md:py-20 bg-white dark:bg-[#1e293b] rounded-3xl mx-2 md:mx-8 shadow-lg mt-8">
+        <h2 className="text-2xl md:text-3xl font-bold text-blue-900 dark:text-white mb-8 text-center">Why Choose z-vest?</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          {features.map((f, i) => (
+            <motion.div
+              key={f.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              className="flex flex-col items-center text-center gap-4 p-6 rounded-xl bg-gradient-to-b from-blue-50 to-white dark:from-blue-900/30 dark:to-blue-900/10 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <span>{f.icon}</span>
+              <h3 className="font-semibold text-lg text-blue-900 dark:text-white">{f.title}</h3>
+              <p className="text-blue-800 dark:text-blue-200 text-sm">{f.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="px-6 md:px-16 lg:px-32 py-14 md:py-20 flex flex-col md:flex-row gap-12 items-center">
+        <div className="w-full md:w-1/2 flex flex-col gap-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-blue-900 dark:text-white mb-2">How It Works</h2>
+          <ol className="list-decimal list-inside text-blue-800 dark:text-blue-200 space-y-3">
+            <li>Sign up and set your savings or investment goals.</li>
+            <li>Automate deposits or invest manually—your choice.</li>
+            <li>Track your progress and watch your wealth grow.</li>
+            <li>Withdraw or reinvest anytime, with full transparency.</li>
+          </ol>
+        </div>
+        <div className="w-full md:w-1/2 flex justify-center">
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="relative w-[320px] h-[420px] md:w-[360px] md:h-[480px] rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-tr from-blue-700 via-blue-400 to-blue-200 flex items-end"
+          >
+            <Image
+              src="/app-dashboard.png"
+              alt="z-vest dashboard screenshot"
+              fill
+              className="object-cover object-bottom"
+            />
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-900/80 to-transparent h-32" aria-hidden="true"></div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="px-6 md:px-16 lg:px-32 py-12 md:py-20 bg-gradient-to-b from-blue-50 to-white dark:from-blue-900/30 dark:to-blue-900/10 rounded-3xl mx-2 md:mx-8 shadow-lg mt-8">
+        <h2 className="text-2xl md:text-3xl font-bold text-blue-900 dark:text-white mb-8 text-center">What Our Users Say</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonials.map((t, i) => (
+            <motion.div
+              key={t.name}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              className="flex flex-col items-center gap-4 p-6 rounded-xl bg-white dark:bg-blue-900/40 shadow-md hover:shadow-lg transition-shadow"
+            >
+              <Image
+                src={t.avatar}
+                alt={`Avatar of ${t.name}`}
+                width={64}
+                height={64}
+                className="rounded-full border-2 border-blue-700 shadow"
               />
-            ))}
-          </div>
+              <p className="text-blue-800 dark:text-blue-200 text-base italic">“{t.text}”</p>
+              <span className="font-semibold text-blue-900 dark:text-white">{t.name}</span>
+            </motion.div>
+          ))}
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="px-6 md:px-16 py-16 bg-white dark:bg-slate-950">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl md:text-4xl font-bold text-blue-900 dark:text-blue-100 mb-8 text-center">Why Choose z-vest?</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-            {features.map((f, i) => (
-              <Card key={i} className="flex flex-col items-center p-6 bg-slate-50 dark:bg-slate-900 border-0 shadow-md hover:shadow-xl transition-shadow group">
-                <div className="mb-4">{f.icon}</div>
-                <h3 className="font-semibold text-lg text-blue-800 dark:text-blue-200 mb-2 text-center">{f.title}</h3>
-                <p className="text-slate-600 dark:text-slate-300 text-center text-sm">{f.desc}</p>
-              </Card>
-            ))}
+      {/* App Download Section */}
+      <section className="px-6 md:px-16 lg:px-32 py-12 flex flex-col md:flex-row items-center gap-8 md:gap-16">
+        <div className="w-full md:w-1/2 flex flex-col gap-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-blue-900 dark:text-white mb-2">Get the z-vest App</h2>
+          <p className="text-blue-800 dark:text-blue-200 max-w-md mb-4">Download our mobile app and manage your savings and investments on the go. Available for iOS and Android.</p>
+          <div className="flex gap-4 mt-2">
+            <Button variant="outline" className="border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white flex items-center gap-2" asChild>
+              <a href="#" aria-label="Download on App Store">
+                <Download className="w-5 h-5" /> App Store
+              </a>
+            </Button>
+            <Button variant="outline" className="border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white flex items-center gap-2" asChild>
+              <a href="#" aria-label="Download on Google Play">
+                <Download className="w-5 h-5" /> Google Play
+              </a>
+            </Button>
           </div>
         </div>
-      </section>
-
-      {/* How It Works Section */}
-      <section className="px-6 md:px-16 py-16 bg-gradient-to-r from-blue-50 via-blue-100 to-blue-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-4xl font-bold text-blue-900 dark:text-blue-100 mb-10 text-center">How It Works</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex flex-col items-center">
-              <Badge className="bg-blue-700 text-white mb-4">1</Badge>
-              <h4 className="font-semibold text-lg mb-2 text-blue-800 dark:text-blue-200">Sign Up & Set Goals</h4>
-              <p className="text-slate-600 dark:text-slate-300 text-center">Create your account and define your savings or investment goals.</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <Badge className="bg-blue-700 text-white mb-4">2</Badge>
-              <h4 className="font-semibold text-lg mb-2 text-blue-800 dark:text-blue-200">Automate & Invest</h4>
-              <p className="text-slate-600 dark:text-slate-300 text-center">Automate your savings or choose investments that fit your risk profile.</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <Badge className="bg-blue-700 text-white mb-4">3</Badge>
-              <h4 className="font-semibold text-lg mb-2 text-blue-800 dark:text-blue-200">Grow & Withdraw</h4>
-              <p className="text-slate-600 dark:text-slate-300 text-center">Watch your wealth grow and withdraw easily when you need it.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="px-6 md:px-16 py-16 bg-white dark:bg-slate-950">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl md:text-4xl font-bold text-blue-900 dark:text-blue-100 mb-10 text-center">What Our Users Say</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((t, i) => (
-              <Card key={i} className="flex flex-col items-center p-8 bg-slate-50 dark:bg-slate-900 border-0 shadow-md hover:shadow-xl transition-shadow">
-                <Avatar src={t.avatar} alt={`Avatar of ${t.name}`} className="w-16 h-16 mb-4" />
-                <p className="italic text-slate-700 dark:text-slate-300 text-center mb-4">“{t.quote}”</p>
-                <div className="flex flex-col items-center">
-                  <span className="font-semibold text-blue-800 dark:text-blue-200">{t.name}</span>
-                  <span className="text-xs text-slate-500 dark:text-slate-400">{t.location}</span>
-                </div>
-              </Card>
-            ))}
-          </div>
+        <div className="w-full md:w-1/2 flex justify-center">
+          <Image
+            src="/app-mockup.png"
+            alt="z-vest app preview"
+            width={280}
+            height={420}
+            className="rounded-2xl shadow-2xl object-cover"
+          />
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="px-6 md:px-16 py-16 bg-slate-50 dark:bg-slate-900">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl md:text-4xl font-bold text-blue-900 dark:text-blue-100 mb-8 text-center">Frequently Asked Questions</h2>
-          <Accordion type="single" collapsible className="w-full">
-            {faqs.map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`}>
-                <AccordionTrigger className="text-blue-800 dark:text-blue-200 font-medium text-lg">{faq.q}</AccordionTrigger>
-                <AccordionContent className="text-slate-700 dark:text-slate-300 text-base">{faq.a}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+      <section className="px-6 md:px-16 lg:px-32 py-12 md:py-20">
+        <h2 className="text-2xl md:text-3xl font-bold text-blue-900 dark:text-white mb-8 text-center">Frequently Asked Questions</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {faqs.map((faq, i) => (
+            <div key={faq.q} className="bg-white dark:bg-blue-900/40 rounded-xl shadow p-6">
+              <h3 className="font-semibold text-blue-900 dark:text-white mb-2">{faq.q}</h3>
+              <p className="text-blue-800 dark:text-blue-200">{faq.a}</p>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* App Download / CTA Section */}
-      <section className="px-6 md:px-16 py-16 bg-gradient-to-r from-blue-700 via-blue-600 to-blue-400 text-white text-center">
-        <h2 className="text-2xl md:text-4xl font-bold mb-4">Ready to Secure Your Financial Future?</h2>
-        <p className="mb-8 text-lg md:text-xl">Join thousands of young Africans growing their wealth with z-vest.</p>
-        <Button asChild size="lg" className="bg-white text-blue-800 font-semibold px-8 py-4 rounded-lg shadow-lg hover:bg-blue-100 transition-all focus:ring-4 focus:ring-blue-300">
-          <Link href="/signup" aria-label="Start Saving Today">
+      {/* CTA Conversion Block */}
+      <section className="flex flex-col items-center justify-center py-12 md:py-20 bg-gradient-to-r from-blue-700 via-blue-500 to-blue-700 rounded-3xl mx-2 md:mx-8 shadow-lg mt-8">
+        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 text-center">Ready to build your future?</h2>
+        <p className="text-blue-100 mb-6 text-center max-w-xl">Join thousands of young Africans taking control of their finances with z-vest. Start your journey to financial freedom today.</p>
+        <Button
+          size="lg"
+          className="w-fit px-8 py-4 bg-white text-blue-700 rounded-full shadow-lg hover:bg-blue-100 hover:text-blue-900 transition-colors flex items-center gap-2 text-lg"
+          asChild
+        >
+          <a href="/signup" aria-label="Start Saving Today">
             Start Saving Today <ArrowRight className="ml-2 w-5 h-5" />
-          </Link>
+          </a>
         </Button>
       </section>
 
       {/* Footer */}
-      <footer className="px-6 md:px-16 py-8 bg-blue-900 text-slate-100">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <span className="inline-block bg-gradient-to-r from-blue-700 to-blue-400 rounded-full w-7 h-7 flex items-center justify-center">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1e3a8a" /><path d="M8 15l4-6 4 6" stroke="#f1f5f9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-            </span>
-            <span className="font-bold text-lg tracking-tight">z-vest</span>
-          </div>
-          <div className="flex items-center gap-6 text-sm">
-            <Link href="/privacy" className="hover:underline">Privacy Policy</Link>
-            <Link href="/terms" className="hover:underline">Terms of Service</Link>
-            <a href="mailto:support@z-vest.com" className="hover:underline">Contact</a>
-          </div>
-          <span className="text-xs text-slate-300">© {new Date().getFullYear()} z-vest. All rights reserved.</span>
+      <footer className="flex flex-col md:flex-row items-center justify-between px-6 md:px-16 lg:px-32 py-8 mt-8 border-t border-blue-100 dark:border-blue-900/40 text-blue-800 dark:text-blue-200 bg-transparent">
+        <div className="flex items-center gap-2 mb-4 md:mb-0">
+          <span className="inline-block rounded-full bg-blue-700 w-7 h-7 mr-2" aria-hidden="true"></span>
+          <span className="font-bold text-lg tracking-tight text-blue-900 dark:text-white">z-vest</span>
         </div>
+        <div className="flex gap-6 text-sm">
+          <a href="#" className="hover:underline" aria-label="Privacy Policy">Privacy Policy</a>
+          <a href="#" className="hover:underline" aria-label="Terms of Service">Terms of Service</a>
+          <a href="#" className="hover:underline" aria-label="Contact">Contact</a>
+        </div>
+        <span className="text-xs text-blue-400 mt-4 md:mt-0">&copy; {new Date().getFullYear()} z-vest. All rights reserved.</span>
       </footer>
     </main>
   );
