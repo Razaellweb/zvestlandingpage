@@ -74,6 +74,7 @@
     "@types/react-dom": "^19.1.8",
     "eslint": "^9",
     "eslint-config-next": "15.2.3",
+    "framer-motion": "^12.23.12",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

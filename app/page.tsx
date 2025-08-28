@@ -2,301 +2,284 @@
 import React from "react";
 import Link from "next/link";
 import { Button } from "../components/ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "../components/ui/avatar";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../components/ui/accordion";
-import { Avatar } from "../components/ui/avatar";
-import { CheckIcon, DownloadIcon, LockClosedIcon, StarFilledIcon } from "@radix-ui/react-icons";
+import { Badge } from "../components/ui/badge";
+import { ArrowRight, CheckCircle, Shield, TrendingUp, Users, Smartphone, Star } from "lucide-react";
 
 const features = [
   {
-    icon: <CheckIcon className="w-6 h-6 text-blue-700" aria-hidden="true" />,
-    title: "Automated savings tailored to your goals",
-    desc: "Set your targets and let z-vest do the rest. Save effortlessly with automation that adapts to your lifestyle.",
+    icon: <TrendingUp className="w-7 h-7 text-blue-700" aria-hidden="true" />,
+    title: "Automated Savings",
+    desc: "Set your goals and let z-vest grow your savings automatically.",
   },
   {
-    icon: <StarFilledIcon className="w-6 h-6 text-blue-700" aria-hidden="true" />,
-    title: "Diverse investment options",
-    desc: "Choose from a range of investment plans designed for every risk profile—grow your wealth your way.",
+    icon: <Shield className="w-7 h-7 text-blue-700" aria-hidden="true" />,
+    title: "Secure & Transparent",
+    desc: "Your funds are protected with bank-level security and full transparency.",
   },
   {
-    icon: <DownloadIcon className="w-6 h-6 text-blue-700" aria-hidden="true" />,
-    title: "Earn competitive interest",
-    desc: "Every deposit earns you more. Watch your savings grow with some of the best rates in the market.",
+    icon: <Users className="w-7 h-7 text-blue-700" aria-hidden="true" />,
+    title: "Diverse Investments",
+    desc: "Choose from a range of investment options for every risk appetite.",
   },
   {
-    icon: <LockClosedIcon className="w-6 h-6 text-blue-700" aria-hidden="true" />,
-    title: "Secure, easy withdrawals",
-    desc: "Withdraw funds anytime with full transparency and robust security. Your money, always accessible.",
+    icon: <Star className="w-7 h-7 text-blue-700" aria-hidden="true" />,
+    title: "Competitive Returns",
+    desc: "Earn attractive interest rates and watch your money grow.",
   },
 ];
 
 const testimonials = [
   {
-    name: "Amina O.",
-    avatar: "https://randomuser.me/api/portraits/women/65.jpg",
-    text: "z-vest made saving so easy! I reached my first goal in just 6 months. The app feels safe and looks amazing.",
-    location: "Lagos, Nigeria",
+    name: "Chinwe O.",
+    image: "https://randomuser.me/api/portraits/women/44.jpg",
+    text: "z-vest made saving for my first car so easy! The app is beautiful and I feel secure.",
+    title: "Product Designer, Lagos",
   },
   {
-    name: "Kwame B.",
-    avatar: "https://randomuser.me/api/portraits/men/43.jpg",
-    text: "I love the investment options. I started small and now my money is working for me. Highly recommend!",
-    location: "Accra, Ghana",
+    name: "Tunde A.",
+    image: "https://randomuser.me/api/portraits/men/32.jpg",
+    text: "I love the investment options. My money is finally working for me.",
+    title: "Software Engineer, Abuja",
   },
   {
-    name: "Zanele M.",
-    avatar: "https://randomuser.me/api/portraits/women/32.jpg",
-    text: "The interest rates are great and withdrawals are always smooth. I trust z-vest with my future.",
-    location: "Johannesburg, South Africa",
+    name: "Amina S.",
+    image: "https://randomuser.me/api/portraits/women/65.jpg",
+    text: "The automated savings plans are a game changer. Highly recommend!",
+    title: "Entrepreneur, Kano",
   },
 ];
 
 const faqs = [
   {
     q: "Is my money safe with z-vest?",
-    a: "Absolutely. We use bank-level encryption and strict security protocols to keep your funds and data secure.",
+    a: "Absolutely. We use bank-level security and your funds are insured and protected.",
   },
   {
     q: "How do I start investing?",
-    a: "Sign up, complete your profile, and choose an investment plan that fits your goals. It’s that simple!",
+    a: "Sign up, set your goals, and choose from our curated investment options. It's that easy!",
   },
   {
-    q: "Are there any hidden fees?",
-    a: "No hidden fees. All charges are transparent and clearly displayed before you commit.",
+    q: "Are there any fees?",
+    a: "No hidden fees. We believe in full transparency. All charges are clearly stated upfront.",
   },
   {
     q: "Can I withdraw anytime?",
-    a: "Yes, you can withdraw your funds at any time, subject to the terms of your chosen plan.",
+    a: "Yes, you can withdraw your savings or investments at any time, subject to plan terms.",
   },
 ];
 
 const socialProof = [
   {
-    logo: "https://randomuser.me/api/portraits/men/12.jpg",
-    alt: "TechCrunch",
-    label: "Featured in TechCrunch",
+    stat: "50,000+",
+    label: "Active Users",
   },
   {
-    logo: "https://randomuser.me/api/portraits/women/21.jpg",
-    alt: "Forbes Africa",
-    label: "Forbes Africa Top 30 Startup",
+    stat: "₦2B+",
+    label: "Assets Managed",
   },
   {
-    logo: "https://randomuser.me/api/portraits/men/34.jpg",
-    alt: "Guardian Nigeria",
-    label: "Guardian Nigeria Recommended",
+    stat: "4.9/5",
+    label: "App Store Rating",
   },
 ];
 
 export default function LandingPage() {
   return (
-    <main className="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 min-h-screen text-slate-50 font-sans">
+    <main className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-slate-50 relative overflow-x-hidden">
+      {/* African-inspired geometric accent */}
+      <div aria-hidden="true" className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-tr from-yellow-400 via-pink-500 to-blue-600 opacity-30 rounded-full blur-3xl z-0" />
       {/* Navbar */}
-      <nav className="flex items-center justify-between px-6 py-4 md:px-16 bg-transparent">
+      <nav className="relative z-10 flex items-center justify-between px-6 py-5 md:px-16">
         <Link href="/" aria-label="z-vest Home" className="flex items-center gap-2">
-          <span className="inline-block w-8 h-8 rounded-full bg-gradient-to-tr from-blue-700 to-blue-400 flex items-center justify-center font-bold text-xl text-white shadow-lg">z</span>
-          <span className="font-bold text-2xl tracking-tight text-white">z-vest</span>
+          <span className="inline-block w-8 h-8 rounded-full bg-gradient-to-tr from-blue-700 via-blue-400 to-yellow-400 flex items-center justify-center font-bold text-xl text-white shadow-lg">z</span>
+          <span className="font-extrabold text-2xl tracking-tight text-white">z-vest</span>
         </Link>
-        <div className="flex gap-4">
-          <Link href="/signin" className="text-slate-200 hover:text-white transition-colors font-medium">Sign In</Link>
-          <Button asChild variant="outline" className="border-white text-white hover:bg-blue-700 hover:text-white transition-colors font-semibold">
-            <Link href="/signup" aria-label="Sign up for z-vest">Sign Up</Link>
+        <div className="flex gap-4 items-center">
+          <Link href="/signin" className="text-slate-200 hover:text-white font-medium transition-colors">Sign In</Link>
+          <Button asChild variant="outline" className="border-white text-white hover:bg-white hover:text-blue-900 transition-colors font-semibold px-6 py-2 rounded-lg">
+            <Link href="/signup" aria-label="Sign Up">Sign Up</Link>
           </Button>
         </div>
       </nav>
-
       {/* Hero Section */}
-      <section className="relative flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-16 md:py-28 gap-10 md:gap-20 overflow-hidden">
-        {/* Left: Text */}
-        <div className="flex-1 z-10 animate-fade-in-up">
+      <section className="relative z-10 flex flex-col md:flex-row items-center justify-between px-6 md:px-16 pt-12 md:pt-24 pb-16 md:pb-32 gap-10">
+        <div className="flex-1 max-w-xl">
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6 text-white drop-shadow-lg">
-            Save Smart.<br />
-            <span className="bg-gradient-to-r from-yellow-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">Invest Easy.</span>
+            Save Smart. <span className="text-yellow-400">Invest Easy.</span> <br className="hidden md:block" /> Secure Your Future.
           </h1>
-          <p className="text-lg md:text-2xl text-slate-200 mb-8 max-w-xl">
-            z-vest empowers young Africans to achieve their financial goals with automated savings, flexible investments, and secure, interest-earning accounts.
+          <p className="text-lg md:text-2xl text-slate-200 mb-8 font-medium">
+            z-vest empowers young Africans to build wealth effortlessly with automated savings, flexible investments, and goal-based financial planning—all in a secure, easy-to-use platform.
           </p>
-          <Button asChild size="lg" className="bg-gradient-to-r from-yellow-400 via-pink-400 to-blue-400 text-blue-900 font-bold shadow-xl hover:scale-105 transition-transform focus:ring-4 focus:ring-yellow-300">
+          <Button asChild size="lg" className="bg-yellow-400 text-blue-900 font-bold px-8 py-4 rounded-xl shadow-lg hover:bg-yellow-300 transition-colors text-lg flex items-center gap-2">
             <Link href="/signup" aria-label="Start Saving Now">
-              Start Saving Now
+              Start Saving Now <ArrowRight className="w-5 h-5" />
             </Link>
           </Button>
+          <div className="mt-8 flex gap-4 items-center">
+            <Shield className="w-6 h-6 text-green-400" aria-hidden="true" />
+            <span className="text-slate-200 text-base">Safe, transparent, and trusted by thousands</span>
+          </div>
         </div>
-        {/* Right: Visual */}
         <div className="flex-1 flex items-center justify-center relative">
-          <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-3xl bg-gradient-to-tr from-blue-700 via-blue-400 to-yellow-300 shadow-2xl flex items-center justify-center overflow-hidden animate-fade-in">
-            <img
-              src="https://randomuser.me/api/portraits/men/75.jpg"
-              alt="Happy African youth using z-vest app"
-              className="w-48 h-48 md:w-64 md:h-64 object-cover rounded-full border-8 border-white shadow-xl z-10 animate-float"
-            />
-            <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-yellow-400 rounded-full blur-2xl opacity-70 animate-pulse" aria-hidden="true" />
-            <div className="absolute -top-6 -left-6 w-16 h-16 bg-pink-400 rounded-full blur-2xl opacity-60 animate-pulse" aria-hidden="true" />
+          {/* App visual mockup */}
+          <div className="w-72 h-96 bg-gradient-to-br from-blue-800 via-blue-600 to-yellow-400 rounded-3xl shadow-2xl border-4 border-white/10 flex flex-col items-center justify-center relative overflow-hidden animate-fade-in">
+            <Smartphone className="w-24 h-24 text-white/80 mb-4" aria-hidden="true" />
+            <span className="text-white text-xl font-bold">Your Wealth, Your Way</span>
+            <span className="mt-2 text-slate-200 text-base">All-in-one savings & investments</span>
+            {/* Decorative African pattern */}
+            <div className="absolute bottom-0 left-0 w-full h-16 bg-[url('/african-pattern.svg')] bg-repeat-x opacity-30" aria-hidden="true" />
           </div>
         </div>
       </section>
-
       {/* Social Proof */}
-      <section className="flex flex-col items-center gap-4 py-6 md:py-10">
-        <span className="uppercase text-xs tracking-widest text-slate-300 mb-2">As seen in</span>
-        <div className="flex gap-8 md:gap-16 items-center flex-wrap justify-center">
-          {socialProof.map((item, i) => (
-            <div key={i} className="flex flex-col items-center gap-2">
-              <img src={item.logo} alt={item.alt} className="w-12 h-12 rounded-full object-cover border-2 border-blue-700 shadow-md" />
-              <span className="text-xs text-slate-200 font-medium">{item.label}</span>
+      <section className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-8 px-6 md:px-16 py-8 md:py-12">
+        {socialProof.map((item, idx) => (
+          <div key={item.label} className="flex flex-col items-center">
+            <span className="text-3xl md:text-4xl font-extrabold text-yellow-400 drop-shadow-lg">{item.stat}</span>
+            <span className="text-slate-200 text-base md:text-lg mt-1">{item.label}</span>
+          </div>
+        ))}
+      </section>
+      {/* Features & Benefits */}
+      <section className="relative z-10 px-6 md:px-16 py-12 md:py-20">
+        <h2 className="text-2xl md:text-4xl font-bold text-white mb-10 text-center">Why Choose <span className="text-yellow-400">z-vest</span>?</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          {features.map((feature, idx) => (
+            <div key={feature.title} className="bg-blue-800/80 rounded-2xl p-6 flex flex-col items-center shadow-lg hover:scale-105 transition-transform duration-200 group">
+              <div className="mb-4">{feature.icon}</div>
+              <h3 className="text-lg font-semibold text-yellow-400 mb-2 text-center">{feature.title}</h3>
+              <p className="text-slate-200 text-center text-base">{feature.desc}</p>
             </div>
           ))}
         </div>
       </section>
-
-      {/* Features & Benefits */}
-      <section className="py-16 md:py-24 px-6 md:px-16 bg-gradient-to-br from-blue-800 via-blue-700 to-blue-600 rounded-3xl mx-2 md:mx-16 shadow-xl mt-8 animate-fade-in">
-        <h2 className="text-3xl md:text-4xl font-bold mb-10 text-white text-center">Why Choose z-vest?</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {features.map((feature, i) => (
-            <div key={i} className="flex items-start gap-5 p-6 rounded-xl bg-blue-900/60 hover:bg-blue-800/80 transition-colors shadow-lg">
-              <div className="flex-shrink-0">{feature.icon}</div>
+      {/* How It Works */}
+      <section className="relative z-10 px-6 md:px-16 py-12 md:py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 rounded-3xl mx-2 md:mx-0 mt-8">
+        <h2 className="text-2xl md:text-4xl font-bold text-white mb-10 text-center">How It Works</h2>
+        <div className="flex flex-col md:flex-row gap-8 items-center justify-center">
+          <div className="flex-1 flex flex-col gap-6">
+            <div className="flex items-start gap-4">
+              <CheckCircle className="w-7 h-7 text-yellow-400 mt-1" aria-hidden="true" />
               <div>
-                <h3 className="text-xl font-semibold mb-2 text-white">{feature.title}</h3>
-                <p className="text-slate-200 text-base">{feature.desc}</p>
+                <h4 className="text-lg font-semibold text-white">Sign Up & Set Your Goals</h4>
+                <p className="text-slate-200">Create an account in minutes and define your savings or investment targets.</p>
               </div>
             </div>
-          ))}
+            <div className="flex items-start gap-4">
+              <CheckCircle className="w-7 h-7 text-yellow-400 mt-1" aria-hidden="true" />
+              <div>
+                <h4 className="text-lg font-semibold text-white">Automate & Invest</h4>
+                <p className="text-slate-200">Set up automated savings or pick from curated investment plans tailored for you.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <CheckCircle className="w-7 h-7 text-yellow-400 mt-1" aria-hidden="true" />
+              <div>
+                <h4 className="text-lg font-semibold text-white">Track & Grow</h4>
+                <p className="text-slate-200">Monitor your progress and watch your wealth grow, all in one place.</p>
+              </div>
+            </div>
+          </div>
+          <div className="flex-1 flex items-center justify-center">
+            <div className="w-64 h-80 bg-gradient-to-br from-yellow-400 via-blue-700 to-blue-900 rounded-2xl shadow-xl flex flex-col items-center justify-center relative overflow-hidden animate-fade-in">
+              <Smartphone className="w-16 h-16 text-white/90 mb-4" aria-hidden="true" />
+              <span className="text-white text-lg font-bold">Get Started in Minutes</span>
+            </div>
+          </div>
         </div>
       </section>
-
-      {/* How It Works */}
-      <section className="py-16 md:py-24 px-6 md:px-16 flex flex-col items-center gap-10 animate-fade-in-up">
-        <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">How It Works</h2>
-        <ol className="flex flex-col md:flex-row gap-8 md:gap-16 w-full max-w-5xl justify-center">
-          <li className="flex-1 flex flex-col items-center text-center">
-            <span className="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-tr from-yellow-400 to-blue-400 text-blue-900 font-bold text-2xl shadow-lg mb-4">1</span>
-            <span className="text-lg font-semibold text-white mb-2">Sign Up & Set Goals</span>
-            <span className="text-slate-200">Create your account and define your savings or investment targets.</span>
-          </li>
-          <li className="flex-1 flex flex-col items-center text-center">
-            <span className="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-tr from-pink-400 to-blue-400 text-blue-900 font-bold text-2xl shadow-lg mb-4">2</span>
-            <span className="text-lg font-semibold text-white mb-2">Automate & Invest</span>
-            <span className="text-slate-200">Set up automated deposits and pick investment plans that suit you.</span>
-          </li>
-          <li className="flex-1 flex flex-col items-center text-center">
-            <span className="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-tr from-blue-400 to-yellow-400 text-blue-900 font-bold text-2xl shadow-lg mb-4">3</span>
-            <span className="text-lg font-semibold text-white mb-2">Grow & Withdraw</span>
-            <span className="text-slate-200">Watch your money grow and withdraw securely whenever you need.</span>
-          </li>
-        </ol>
-      </section>
-
-      {/* Testimonials & Reviews */}
-      <section className="py-16 md:py-24 px-6 md:px-16 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 rounded-3xl mx-2 md:mx-16 shadow-xl mt-8 animate-fade-in">
-        <h2 className="text-3xl md:text-4xl font-bold mb-10 text-white text-center">What Our Users Say</h2>
+      {/* Testimonials */}
+      <section className="relative z-10 px-6 md:px-16 py-12 md:py-20">
+        <h2 className="text-2xl md:text-4xl font-bold text-white mb-10 text-center">What Our Users Say</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((t, i) => (
-            <div key={i} className="flex flex-col items-center bg-blue-800/70 rounded-xl p-8 shadow-lg hover:scale-105 transition-transform">
-              <Avatar>
-                <img src={t.avatar} alt={`Avatar of ${t.name}`} className="w-16 h-16 rounded-full object-cover border-4 border-yellow-400 shadow-md" />
+          {testimonials.map((t, idx) => (
+            <div key={t.name} className="bg-blue-800/80 rounded-2xl p-8 flex flex-col items-center shadow-lg hover:scale-105 transition-transform duration-200">
+              <Avatar className="mb-4 w-16 h-16">
+                <AvatarImage src={t.image} alt={`Avatar of ${t.name}`} />
+                <AvatarFallback>{t.name[0]}</AvatarFallback>
               </Avatar>
-              <p className="text-slate-100 mt-6 mb-4 text-center">“{t.text}”</p>
-              <span className="font-semibold text-white">{t.name}</span>
-              <span className="text-xs text-slate-300">{t.location}</span>
+              <p className="text-slate-100 text-base text-center mb-4">“{t.text}”</p>
+              <span className="text-yellow-400 font-semibold text-sm">{t.name}</span>
+              <span className="text-slate-300 text-xs mt-1">{t.title}</span>
             </div>
           ))}
         </div>
       </section>
-
-      {/* App Download Section */}
-      <section className="py-16 md:py-24 px-6 md:px-16 flex flex-col md:flex-row items-center justify-between gap-10 animate-fade-in-up">
-        <div className="flex-1">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Get the z-vest App</h2>
-          <p className="text-lg text-slate-200 mb-6 max-w-lg">Save, invest, and manage your money on the go. Download the z-vest app for iOS and Android.</p>
-          <div className="flex gap-4">
-            <Button asChild variant="outline" className="border-white text-white hover:bg-blue-700 hover:text-white transition-colors font-semibold">
-              <a href="#" aria-label="Download on App Store">
-                <svg className="w-6 h-6 mr-2 inline-block" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.564 13.307c-.019-2.019 1.652-2.99 1.727-3.035-0.942-1.376-2.406-1.566-2.922-1.588-1.244-.126-2.428.728-3.063.728-.635 0-1.613-.71-2.656-.69-1.366.02-2.634.793-3.34 2.017-1.43 2.478-.364 6.145 1.025 8.157.68.98 1.49 2.08 2.553 2.04 1.03-.04 1.417-.66 2.662-.66 1.245 0 1.59.66 2.662.64 1.104-.02 1.797-1 2.474-1.98.78-1.13 1.104-2.23 1.122-2.29-.025-.012-2.16-.83-2.18-3.29zm-2.09-6.07c.56-.68.94-1.63.84-2.58-.81.03-1.78.54-2.36 1.22-.52.6-.98 1.56-.81 2.48.86.07 1.77-.44 2.33-1.12z"/></svg>
-                App Store
-              </a>
-            </Button>
-            <Button asChild variant="outline" className="border-white text-white hover:bg-blue-700 hover:text-white transition-colors font-semibold">
-              <a href="#" aria-label="Get it on Google Play">
-                <svg className="w-6 h-6 mr-2 inline-block" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.654 2.978c-.23.13-.37.37-.37.63v16.78c0 .26.14.5.37.63.11.06.23.09.35.09.13 0 .25-.03.36-.1l10.13-6.39-10.13-6.39c-.22-.13-.36-.37-.36-.64zm13.13 7.41-2.6-1.64-1.89 1.19 4.49 2.83 1.89-1.19-1.89-1.19zm-2.6 1.64-10.13 6.39 10.13 6.39c.11.07.23.1.36.1.12 0 .24-.03.35-.09.23-.13.37-.37.37-.63v-16.78c0-.26-.14-.5-.37-.63-.11-.06-.23-.09-.35-.09-.13 0-.25.03-.36.1z"/></svg>
-                Google Play
-              </a>
-            </Button>
-          </div>
-        </div>
-        <div className="flex-1 flex items-center justify-center">
-          <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="African youth using z-vest app on phone" className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-2xl shadow-2xl border-8 border-blue-700" />
-        </div>
-      </section>
-
       {/* FAQ Section */}
-      <section className="py-16 md:py-24 px-6 md:px-16 animate-fade-in">
-        <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 text-center">Frequently Asked Questions</h2>
-        <Accordion type="single" collapsible className="max-w-2xl mx-auto bg-blue-900/60 rounded-xl shadow-lg divide-y divide-blue-800">
-          {faqs.map((faq, i) => (
-            <AccordionItem key={i} value={`faq-${i}`}>
-              <AccordionTrigger className="text-lg font-semibold text-white hover:text-yellow-400 focus:outline-none">
-                {faq.q}
-              </AccordionTrigger>
-              <AccordionContent className="text-slate-200 text-base">
-                {faq.a}
-              </AccordionContent>
+      <section className="relative z-10 px-6 md:px-16 py-12 md:py-20 bg-blue-900/80 rounded-3xl mx-2 md:mx-0 mt-8">
+        <h2 className="text-2xl md:text-4xl font-bold text-white mb-10 text-center">Frequently Asked Questions</h2>
+        <Accordion type="single" collapsible className="w-full max-w-2xl mx-auto">
+          {faqs.map((faq, idx) => (
+            <AccordionItem key={faq.q} value={`faq-${idx}`}>
+              <AccordionTrigger className="text-lg font-semibold text-yellow-400">{faq.q}</AccordionTrigger>
+              <AccordionContent className="text-slate-200 text-base">{faq.a}</AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
       </section>
-
-      {/* CTA Conversion Block */}
-      <section className="py-16 md:py-24 px-6 md:px-16 flex flex-col items-center bg-gradient-to-r from-yellow-400 via-pink-400 to-blue-400 rounded-3xl mx-2 md:mx-16 shadow-2xl mt-8 animate-fade-in-up">
-        <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6 text-center">Ready to build your future?</h2>
-        <p className="text-lg text-blue-900 mb-8 text-center max-w-xl">Join thousands of young Africans saving and investing with confidence. Start your journey with z-vest today.</p>
-        <Button asChild size="lg" className="bg-blue-900 text-yellow-400 font-bold shadow-xl hover:scale-105 transition-transform focus:ring-4 focus:ring-yellow-300">
-          <Link href="/signup" aria-label="Start Saving Now">
-            Start Saving Now
-          </Link>
-        </Button>
+      {/* App Download & Contact Section */}
+      <section className="relative z-10 px-6 md:px-16 py-12 md:py-20 flex flex-col md:flex-row items-center justify-between gap-10">
+        <div className="flex-1">
+          <h2 className="text-2xl md:text-4xl font-bold text-white mb-4">Download the z-vest App</h2>
+          <p className="text-slate-200 mb-6">Start your journey to financial freedom. Available soon on iOS & Android.</p>
+          <div className="flex gap-4">
+            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-blue-900 transition-colors font-semibold px-6 py-2 rounded-lg opacity-60 cursor-not-allowed" disabled>
+              Coming Soon to App Store
+            </Button>
+            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-blue-900 transition-colors font-semibold px-6 py-2 rounded-lg opacity-60 cursor-not-allowed" disabled>
+              Coming Soon to Play Store
+            </Button>
+          </div>
+        </div>
+        <div className="flex-1">
+          <h2 className="text-2xl md:text-4xl font-bold text-white mb-4">Contact Us</h2>
+          <form className="bg-blue-800/80 rounded-2xl p-8 flex flex-col gap-4 max-w-md" aria-label="Contact form">
+            <label htmlFor="name" className="text-slate-200 font-medium">Name</label>
+            <input id="name" name="name" type="text" required className="rounded-lg px-4 py-2 bg-blue-900 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-yellow-400" placeholder="Your Name" aria-label="Your Name" />
+            <label htmlFor="email" className="text-slate-200 font-medium">Email</label>
+            <input id="email" name="email" type="email" required className="rounded-lg px-4 py-2 bg-blue-900 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-yellow-400" placeholder="you@email.com" aria-label="Your Email" />
+            <label htmlFor="message" className="text-slate-200 font-medium">Message</label>
+            <textarea id="message" name="message" required rows={3} className="rounded-lg px-4 py-2 bg-blue-900 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-yellow-400" placeholder="How can we help you?" aria-label="Your Message" />
+            <Button type="submit" className="bg-yellow-400 text-blue-900 font-bold px-6 py-3 rounded-lg mt-2 hover:bg-yellow-300 transition-colors">Send Message</Button>
+          </form>
+        </div>
       </section>
-
+      {/* CTA Conversion Block */}
+      <section className="relative z-10 px-6 md:px-16 py-12 md:py-20 flex flex-col items-center justify-center">
+        <div className="bg-gradient-to-tr from-yellow-400 via-blue-700 to-blue-900 rounded-3xl shadow-2xl p-10 md:p-16 flex flex-col items-center w-full max-w-3xl">
+          <h2 className="text-2xl md:text-4xl font-bold text-white mb-4 text-center">Ready to Secure Your Future?</h2>
+          <p className="text-slate-200 mb-8 text-center">Join thousands of young Africans building wealth with z-vest.</p>
+          <Button asChild size="lg" className="bg-yellow-400 text-blue-900 font-bold px-8 py-4 rounded-xl shadow-lg hover:bg-yellow-300 transition-colors text-lg flex items-center gap-2">
+            <Link href="/signup" aria-label="Start Saving Now">
+              Start Saving Now <ArrowRight className="w-5 h-5" />
+            </Link>
+          </Button>
+        </div>
+      </section>
       {/* Footer */}
-      <footer className="py-8 px-6 md:px-16 flex flex-col md:flex-row items-center justify-between gap-4 text-slate-300 mt-12">
-        <div className="flex items-center gap-2">
-          <span className="inline-block w-8 h-8 rounded-full bg-gradient-to-tr from-blue-700 to-blue-400 flex items-center justify-center font-bold text-xl text-white shadow-lg">z</span>
-          <span className="font-bold text-xl tracking-tight text-white">z-vest</span>
+      <footer className="relative z-10 px-6 md:px-16 py-8 flex flex-col md:flex-row items-center justify-between border-t border-blue-800/60 mt-8">
+        <div className="flex items-center gap-2 mb-4 md:mb-0">
+          <span className="inline-block w-8 h-8 rounded-full bg-gradient-to-tr from-blue-700 via-blue-400 to-yellow-400 flex items-center justify-center font-bold text-xl text-white shadow-lg">z</span>
+          <span className="font-extrabold text-xl tracking-tight text-white">z-vest</span>
         </div>
-        <div className="flex gap-6 text-sm">
-          <Link href="/privacy" className="hover:text-yellow-400 transition-colors">Privacy Policy</Link>
-          <Link href="/terms" className="hover:text-yellow-400 transition-colors">Terms of Service</Link>
-          <a href="mailto:support@z-vest.com" className="hover:text-yellow-400 transition-colors">Contact</a>
+        <div className="text-slate-300 text-sm">© {new Date().getFullYear()} z-vest. All rights reserved.</div>
+        <div className="flex gap-4 mt-4 md:mt-0">
+          <Link href="/privacy" className="text-slate-300 hover:text-white transition-colors text-sm">Privacy Policy</Link>
+          <Link href="/terms" className="text-slate-300 hover:text-white transition-colors text-sm">Terms of Service</Link>
         </div>
-        <span className="text-xs">© {new Date().getFullYear()} z-vest. All rights reserved.</span>
       </footer>
-
-      {/* Animations */}
-      <style jsx global>{`
-        @keyframes fade-in {
-          from { opacity: 0; transform: translateY(40px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in {
-          animation: fade-in 1s cubic-bezier(0.4,0,0.2,1) both;
-        }
-        @keyframes fade-in-up {
-          from { opacity: 0; transform: translateY(60px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-up {
-          animation: fade-in-up 1.2s cubic-bezier(0.4,0,0.2,1) both;
-        }
-        @keyframes float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-16px); }
-        }
-        .animate-float {
-          animation: float 3s ease-in-out infinite;
-        }
-        @media (prefers-color-scheme: dark) {
-          body { background: #0f172a; }
-        }
-      `}</style>
+      {/* SEO Meta Tags */}
+      <head>
+        <title>z-vest | Save Smart. Invest Easy. Secure Your Future.</title>
+        <meta name="description" content="z-vest empowers young Africans to build wealth effortlessly with automated savings, flexible investments, and goal-based financial planning—all in a secure, easy-to-use platform." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content="z-vest | Save Smart. Invest Easy. Secure Your Future." />
+        <meta property="og:description" content="z-vest empowers young Africans to build wealth effortlessly with automated savings, flexible investments, and goal-based financial planning—all in a secure, easy-to-use platform." />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="z-vest" />
+      </head>
     </main>
   );
 }
